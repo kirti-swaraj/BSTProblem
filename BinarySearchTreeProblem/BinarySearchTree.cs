@@ -28,6 +28,7 @@ namespace BinarySearchTreeProblem
         /// of the parent root node while we traverse the BST
         /// </summary>
         static int leftCount = 0, rightCount = 0;
+        bool result = false;
 
         /// <summary>
         /// UC 1 : Inserts the item into the tree in inorder way
@@ -60,6 +61,41 @@ namespace BinarySearchTreeProblem
             Display();
             /// Size will be equal to total nodes present in left subtree + right subtree + parent node
             Console.WriteLine("Size of the BST: " + (1 + leftCount + rightCount));
+        }
+        /// <summary>
+        /// UC 3 : Checks for the element If it exists.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="tree">The node.</param>
+        /// <returns>true if it is present else false</returns>
+        public bool IfExists(T element, BinarySearchTree<T> tree)
+        {
+            /// If no node is present in the tree
+            if (tree == null)
+            {
+                return false;
+            }
+            /// If at any subtree the rootNode data equals the element we are searching for
+            if (tree.RootNodeData.Equals(element))
+            {
+                Console.WriteLine("Found the element in BST: " + tree.RootNodeData);
+                result = true;
+            }
+            else
+            {
+                /// Showing how the tree is being traversed while searching for the entered element
+                Console.WriteLine("Traversing the BST: Current element is {0} in BST", tree.RootNodeData);
+            }
+            /// Recursion to traverse the whole BST
+            if (element.CompareTo(tree.RootNodeData) < 0)
+            {
+                IfExists(element, tree.LeftTree);
+            }
+            if (element.CompareTo(tree.RootNodeData) > 0)
+            {
+                IfExists(element, tree.RightTree);
+            }
+            return result;
         }
 
 
