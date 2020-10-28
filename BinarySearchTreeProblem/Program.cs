@@ -25,6 +25,8 @@ namespace BinarySearchTreeProblem
             binarySearch.Insert(63);
             binarySearch.Insert(67);
             binarySearch.GetSizeAndDisplay();
+            Console.WriteLine("Is the element present: " + binarySearch.IfExists(63, binarySearch));
+            Console.ReadLine();
         }
     }
 }
